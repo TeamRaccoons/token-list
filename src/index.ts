@@ -7,6 +7,10 @@ import {
 import { Connection, PublicKey } from "@solana/web3.js";
 import bs58 = require("bs58");
 
+const MAX_NAME_LENGTH = 32;
+const MAX_SYMBOL_LENGTH = 10;
+const MAX_URI_LENGTH = 200;
+
 const connection = new Connection(process.env.RPC_URL ?? "");
 
 async function main() {
@@ -18,9 +22,9 @@ async function main() {
     updateAuthority: PublicKey.default,
     mint: PublicKey.default,
     data: {
-      name: "lol",
-      symbol: "LOL",
-      uri: "lol",
+      name: "a".repeat(MAX_NAME_LENGTH),
+      symbol: "a".repeat(MAX_SYMBOL_LENGTH),
+      uri: "a".repeat(MAX_URI_LENGTH),
       sellerFeeBasisPoints: 0,
       creators: null,
     },
